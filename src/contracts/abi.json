@@ -1,0 +1,94 @@
+[
+	{
+		"constant": false,
+		"inputs": [
+			{
+				"name": "key",
+				"type": "string"
+			},
+			{
+				"name": "value",
+				"type": "string"
+			}
+		],
+		"name": "setBasicData",
+		"outputs": [],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [
+			{
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"name": "books",
+		"outputs": [
+			{
+				"name": "name",
+				"type": "string"
+			},
+			{
+				"name": "description",
+				"type": "string"
+			},
+			{
+				"name": "year",
+				"type": "int32"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [
+			{
+				"name": "key",
+				"type": "string"
+			}
+		],
+		"name": "getBasicData",
+		"outputs": [
+			{
+				"name": "",
+				"type": "string"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": false,
+		"inputs": [
+			{
+				"name": "name",
+				"type": "string"
+			},
+			{
+				"name": "description",
+				"type": "string"
+			},
+			{
+				"name": "year",
+				"type": "int32"
+			}
+		],
+		"name": "addBook",
+		"outputs": [],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "constructor"
+	}
+]
