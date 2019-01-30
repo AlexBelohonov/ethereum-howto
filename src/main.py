@@ -118,3 +118,17 @@ print(transaction.hex())
 # https://web3py.readthedocs.io/en/stable/examples.html?highlight=token
 # https://web3py.readthedocs.io/en/stable/examples.html#currency-conversions
 # https://web3py.readthedocs.io/en/stable/filters.html#filter-class
+
+
+class EthereumProvider:
+
+    def __init__(self, account_address, password):
+        self.account_address = account_address
+        self.password = password
+
+    def _unlock_account(self):
+        pass
+
+    def _transact(self):
+        pass
+
