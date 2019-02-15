@@ -1,10 +1,49 @@
 pragma solidity >=0.4.22 <0.6.0;
 
-contract SimpleAuction {
+/**
+ * @title Ownable
+ * The Ownable contract has an owner address, and provides basic authorization control
+ * functions, this simplifies the implementation of "user permissions".
+ */
+contract Ownable {
+
+  address public owner;
+
+  /**
+   * The Ownable constructor sets the original `owner` of the contract to the sender
+   * account.
+   */
+  constructor() internal {
+    owner = msg.sender;
+  }
+
+  /**
+   * Throws if called by any account other than the owner.
+   */
+  modifier onlyOwner() {
+    require(msg.sender == owner);
+    // Do not forget the "_;"! It will
+    // be replaced by the actual function
+    // body when the modifier is used.
+    _;
+  }
+
+  /**
+   * Allows the current owner to transfer control of the contract to a newOwner.
+   * @param newOwner The address to transfer ownership to.
+   */
+  function transferOwnership(address newOwner) internal onlyOwner {
+    require(newOwner != address(0));
+    owner = newOwner;
+  }
+}
+
+
+contract MySimpleAuction is Ownable {
     // Parameters of the auction. Times are either
     // absolute unix timestamps (seconds since 1970-01-01)
-    // or time periods in seconds.
-    address payable public beneficiary;
+    // or time periods in seconds. payable
+    address public beneficiary;
     uint public auctionEndTime;
 
     // Current state of the auction.
@@ -28,13 +67,11 @@ contract SimpleAuction {
     // confirm a transaction.
 
     /// Create a simple auction with `_biddingTime`
-    /// seconds bidding time on behalf of the
-    /// beneficiary address `_beneficiary`.
+    /// seconds bidding time on behalf of Owner
     constructor(
-        uint _biddingTime,
-        address payable _beneficiary
+        uint _biddingTime
     ) public {
-        beneficiary = _beneficiary;
+        beneficiary = msg.sender;
         auctionEndTime = now + _biddingTime;
     }
 
