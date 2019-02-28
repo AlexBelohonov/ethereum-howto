@@ -79,14 +79,14 @@ contract EBookStorage is Ownable {
     /**
     * Allows the current owner to add a book with its metadata
     */
-    function addBook (string memory name, string memory description, uint year, string memory author)
+    function addBook (string memory title, string memory description, uint year, string memory author)
     public
     onlyOwner()
     returns(uint) {
-        require(!compareStrings(name, ""), "Name is required argument!");
+        require(!compareStrings(title, ""), "Name is required argument!");
         require(!compareStrings(description, ""), "Description is required argument!");
         require(!compareStrings(author, ""), "Author is required argument!");
-        books.push(Structures.Book(name, description, year, author));
+        books.push(Structures.Book(title, description, year, author));
         return books.length;
     }
 }
