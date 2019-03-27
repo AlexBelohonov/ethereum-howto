@@ -1,11 +1,11 @@
-pragma solidity ^0.4.25;
+pragma solidity >=0.4.22 <0.6.0;
 
 
 contract MySimpleAuction {
     // Parameters of the auction. Times are either
     // absolute unix timestamps (seconds since 1970-01-01)
     // or time periods in seconds.
-    address public beneficiary;
+    address payable public beneficiary;
     uint public auctionEndTime;
 
     // Current state of the auction.
@@ -30,10 +30,9 @@ contract MySimpleAuction {
 
     /// Create a simple auction with `_biddingTime`
     /// seconds bidding time on behalf of the
-    /// beneficiary address `_beneficiary`.
+    /// beneficiary address `beneficiary`.
     constructor(
         uint _biddingTime
-        //address payable _beneficiary
     ) public {
         beneficiary = msg.sender;
         auctionEndTime = now + _biddingTime;
